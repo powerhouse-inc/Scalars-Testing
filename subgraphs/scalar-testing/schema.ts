@@ -28,6 +28,7 @@ export const schema: DocumentNode = gql`
     emails: [EmailAddressFieldType!]!
     passwords: [PasswordFieldType!]!
     phones: [PhoneNumberFieldType!]!
+    files: [FileBase64!]!
   }
 
   type BooleanFieldType {
@@ -136,6 +137,11 @@ export const schema: DocumentNode = gql`
   type PhoneNumberFieldType {
     id: ID!
     phone: String
+  }
+
+  type FileBase64 {
+    id: ID!
+    file: String
   }
 
   """
@@ -376,6 +382,16 @@ export const schema: DocumentNode = gql`
       docId: PHID
       input: ScalarTesting_RemovePhoneNumberInput
     ): Int
+    ScalarTesting_addFileBase64(
+      driveId: String
+      docId: PHID
+      input: ScalarTesting_AddFileBase64Input
+    ): Int
+    ScalarTesting_removeFileBase64(
+      driveId: String
+      docId: PHID
+      input: ScalarTesting_RemoveFileBase64Input
+    ): Int
   }
 
   """
@@ -605,6 +621,17 @@ export const schema: DocumentNode = gql`
     phone: String
   }
   input ScalarTesting_RemovePhoneNumberInput {
+    id: ID!
+  }
+
+  """
+  Module: FileBase64
+  """
+  input ScalarTesting_AddFileBase64Input {
+    id: ID!
+    file: String
+  }
+  input ScalarTesting_RemoveFileBase64Input {
     id: ID!
   }
 `;

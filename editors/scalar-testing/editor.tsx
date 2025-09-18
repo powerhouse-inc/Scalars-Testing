@@ -21,6 +21,7 @@ import type {
   AddEmailInput,
   AddPasswordInput,
   AddPhoneNumberInput,
+  FileBase64,
 } from "../../document-models/scalar-testing/index.js";
 import { State } from "./components/state.js";
 import { BooleanForm } from "./components/forms/boolean-form.js";
@@ -42,8 +43,8 @@ import {
   DropdownContent,
   DropdownItem,
   DropdownTrigger,
-} from "@powerhousedao/document-engineering/ui";
-import { Icon } from "@powerhousedao/design-system";
+} from "@powerhousedao/document-engineering";
+import { Icon } from "@powerhousedao/document-engineering";
 import { FormWrapper } from "./components/form-wrapper.js";
 import { DateForm } from "./components/forms/date-form.js";
 import { TimeForm } from "./components/forms/time-form.js";
@@ -57,6 +58,7 @@ import {
 import { EmailForm } from "./components/forms/email-form.js";
 import { PasswordForm } from "./components/forms/password-form.js";
 import { PhoneNumberForm } from "./components/forms/phone-number-form.js";
+import { FileForm } from "./components/forms/file-form.js";
 
 export type IProps = EditorProps<ScalarTestingDocument>;
 
@@ -151,6 +153,10 @@ export default function Editor({ dispatch, document }: IProps) {
     dispatch(actions.addPhoneNumber(data));
   }, []);
 
+  const onAddFile = useCallback((data: FileBase64) => {
+    dispatch(actions.addFileBase64(data));
+  }, []);
+
   return (
     <div className="overflow-auto" style={{ maxHeight: "calc(100vh - 50px)" }}>
       <State state={state} />
@@ -203,6 +209,7 @@ export default function Editor({ dispatch, document }: IProps) {
           <EmailForm onAddEmail={onAddEmail} emailsState={state.emails} />
           <PasswordForm onAddPassword={onAddPassword} passwordsState={state.passwords} />
           <PhoneNumberForm onAddPhoneNumber={onAddPhoneNumber} phoneNumbersState={state.phones} />
+          <FileForm onAddFile={onAddFile} filesState={state.files}/>
           <FormWrapper title="Add Value Dropdown">
             <Dropdown>
               <DropdownTrigger className="w-[284px]">
