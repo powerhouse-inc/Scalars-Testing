@@ -38,6 +38,7 @@ type ScalarTestingState {
   emails: [EmailAddressFieldType!]!
   passwords: [PasswordFieldType!]!
   phones: [PhoneNumberFieldType!]!
+  files: [FileBase64!]!
 }
 
 type BooleanFieldType {
@@ -147,6 +148,11 @@ type PasswordFieldType{
 type PhoneNumberFieldType {
   id: ID!
   phone: String
+}
+
+type FileBase64 {
+  id: ID!
+  file: String
 }
 
 
@@ -389,4 +395,15 @@ input AddPhoneNumberInput {
 
 input RemovePhoneNumberInput {
   id: ID!
+}
+
+# file_base64
+
+input AddFileBase64Input {
+ id:ID!
+ file: String 
+}
+
+input RemoveFileBase64Input {
+ id: ID!
 }
