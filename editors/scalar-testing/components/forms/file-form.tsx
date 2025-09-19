@@ -28,7 +28,9 @@ export function FileForm({ onAddFile, filesState }: FileFormProps) {
 
   return (
     <FormWrapper title="Add File">
+      <div className="flex w-full flex-wrap">
       <State state={filesState} />
+      </div>      
 
       <div className="mb-6">
         <Form
