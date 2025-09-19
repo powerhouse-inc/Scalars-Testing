@@ -13,11 +13,12 @@ export function State<T extends object = ScalarTestingState>({
   return (
     <div className="mb-5">
       <div className="text-sm font-medium">State:</div>
-      {React.createElement(ReactJsonView as any, { 
-        collapsed: true, 
-        enableClipboard: false, 
-        src: state 
-      })}
+        {React.createElement(ReactJsonView as any, {
+          collapsed: true,
+          enableClipboard: false,
+          src: state,
+          style: { wordBreak: "break-word", whiteSpace: "pre-wrap" },
+        })}
     </div>
   );
 }

@@ -29,7 +29,6 @@ export function FileForm({ onAddFile, filesState }: FileFormProps) {
   return (
     <FormWrapper title="Add File">
       <State state={filesState} />
-
       <div className="mb-6">
         <Form
           defaultValues={{ file: null }}
