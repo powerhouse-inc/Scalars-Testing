@@ -1,6 +1,5 @@
 import {
   type FileBase64,
-  type AddEmailInput,
   type ScalarTestingState,
 } from "document-models/scalar-testing/index.js";
 import { useCallback } from "react";
